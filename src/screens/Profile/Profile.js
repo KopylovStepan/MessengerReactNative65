@@ -18,7 +18,7 @@ const dataPhoto = [
   require('./../../../assets/img/Photo9.jpg'),
 ];
 
-const Profile = () => {
+const Profile = ({navigation}) => {
   const [modalProfileDetails, setModalProfileDetails] = useState(false);
   const [modalProfileMenu, setModalProfileMenu] = useState(false);
   const showProfileMenu = () => {
@@ -29,7 +29,7 @@ const Profile = () => {
   };
 
   return (
-    <>
+    <View style={styles.wrapper}>
       <View style={styles.container}>
         <FlatList
           style={styles.photos}
@@ -38,6 +38,7 @@ const Profile = () => {
             <ProfileHeader
               showProfileMenu={showProfileMenu}
               showProfileMoreDetails={showProfileMoreDetails}
+              navigation={navigation}
             />
           }
           data={dataPhoto}
@@ -52,7 +53,7 @@ const Profile = () => {
         setActive={setModalProfileDetails}
       />
       <ProfileMenu active={modalProfileMenu} setActive={setModalProfileMenu} />
-    </>
+    </View>
   );
 };
 

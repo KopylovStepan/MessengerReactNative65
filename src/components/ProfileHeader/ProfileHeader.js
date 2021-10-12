@@ -9,11 +9,17 @@ import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
 import icoMoonConfig from './../../../selection.json';
 const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
-const ProfileHeader = ({showProfileMoreDetails, showProfileMenu}) => {
+const ProfileHeader = ({
+  showProfileMoreDetails,
+  showProfileMenu,
+  navigation,
+}) => {
   return (
     <>
       <View style={styles.header}>
-        <Icon name={'arrow-left'} size={22} color={colors.white} />
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Icon name={'arrow-left'} size={22} color={colors.white} />
+        </TouchableOpacity>
 
         <TouchableOpacity onPress={showProfileMenu}>
           <Icon name={'dots-horizontal'} size={22} color={colors.white} />

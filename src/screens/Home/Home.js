@@ -61,29 +61,33 @@ const postData = [
   },
 ];
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.header__menu}>
-          <Icon name="menu" size={22} color={colors.white} />
-        </TouchableOpacity>
-        <View style={styles.header__right}>
-          <TouchableOpacity style={styles.header__search}>
-            <Icon name="search" size={22} color={colors.white} />
+    <View style={styles.wrapper}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            onPress={() => navigation.openDrawer()}
+            style={styles.header__menu}>
+            <Icon name="menu" size={22} color={colors.white} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.header__alert}>
-            <Icon name="Alert" size={22} color={colors.white} />
-          </TouchableOpacity>
+          <View style={styles.header__right}>
+            <TouchableOpacity style={styles.header__search}>
+              <Icon name="search" size={22} color={colors.white} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.header__alert}>
+              <Icon name="Alert" size={22} color={colors.white} />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
 
-      <FlatList
-        style={styles.posts}
-        data={postData}
-        renderItem={object => <HomePost item={object.item} />}
-        keyExtractor={item => item.id}
-      />
+        <FlatList
+          style={styles.posts}
+          data={postData}
+          renderItem={object => <HomePost item={object.item} />}
+          keyExtractor={item => item.id}
+        />
+      </View>
     </View>
   );
 };
