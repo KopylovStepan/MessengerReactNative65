@@ -7,14 +7,12 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import Feather from 'react-native-vector-icons/Feather';
-import Entypo from 'react-native-vector-icons/Entypo';
-import colors from '../../constants/colors';
-import styles from './HomeStyle';
 import HomePost from '../../components/HomePost';
+import styles from './HomeStyle';
+import colors from '../../constants/colors';
+import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
+import icoMoonConfig from './../../../selection.json';
+const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
 const postData = [
   {
@@ -68,14 +66,14 @@ const Home = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.header__menu}>
-          <Feather name="menu" size={25} color={colors.white} />
+          <Icon name="menu" size={22} color={colors.white} />
         </TouchableOpacity>
         <View style={styles.header__right}>
           <TouchableOpacity style={styles.header__search}>
-            <Ionicons name="md-search" size={25} color={colors.white} />
+            <Icon name="search" size={22} color={colors.white} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.header__alert}>
-            <Fontisto name="bell" size={25} color={colors.white} />
+            <Icon name="Alert" size={22} color={colors.white} />
           </TouchableOpacity>
         </View>
       </View>

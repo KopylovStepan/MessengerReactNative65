@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import {Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import Feather from 'react-native-vector-icons/Feather';
-import Entypo from 'react-native-vector-icons/Entypo';
-import colors from '../../constants/colors';
 import styles from './HomePostStyle';
+import colors from '../../constants/colors';
+import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
+import icoMoonConfig from './../../../selection.json';
+const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
 const HomePost = ({item}) => {
   const [imgActive, setImgActive] = useState(0);
@@ -31,11 +29,7 @@ const HomePost = ({item}) => {
           </View>
         </View>
         <TouchableOpacity style={styles.post__edit}>
-          <Entypo
-            name="dots-three-vertical"
-            size={25}
-            color={colors.pearlPurple}
-          />
+          <Icon name="dots-vertical" size={22} color={colors.pearlPurple} />
         </TouchableOpacity>
       </View>
       <View style={styles.post__content}>
@@ -76,22 +70,18 @@ const HomePost = ({item}) => {
         <View style={styles.post__info}>
           {item.likesAmount ? (
             <View style={styles.post__infoItem}>
-              <AntDesign name="like2" size={25} color={colors.white} />
+              <Icon name="like" size={22} color={colors.white} />
               <Text style={styles.post__infoText}>{item.likesAmount}</Text>
             </View>
           ) : null}
           {item.commentsAmount ? (
             <View style={styles.post__infoItem}>
-              <Ionicons
-                name="ios-chatbubble-ellipses-outline"
-                size={25}
-                color={colors.white}
-              />
+              <Icon name="chat" size={22} color={colors.white} />
               <Text style={styles.post__infoText}>{item.commentsAmount}</Text>
             </View>
           ) : null}
         </View>
-        <Feather name="bookmark" size={25} color={colors.white} />
+        <Icon name="bookmark" size={22} color={colors.white} />
       </View>
     </View>
   );

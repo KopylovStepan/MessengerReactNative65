@@ -5,14 +5,18 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import colors from '../../constants/colors';
 import MessengerButton from '../ui-kit/buttons/MessengerButton';
+import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
+import icoMoonConfig from './../../../selection.json';
+const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
 const ProfileHeader = ({showProfileMoreDetails, showProfileMenu}) => {
   return (
     <>
       <View style={styles.header}>
-        <AntDesign name="arrowleft" size={25} color={colors.white} />
+        <Icon name={'arrow-left'} size={22} color={colors.white} />
+
         <TouchableOpacity onPress={showProfileMenu}>
-          <Entypo name="dots-three-horizontal" size={25} color={colors.white} />
+          <Icon name={'dots-horizontal'} size={22} color={colors.white} />
         </TouchableOpacity>
       </View>
       <View style={styles.profile}>

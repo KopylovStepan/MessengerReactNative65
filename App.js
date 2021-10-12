@@ -24,8 +24,8 @@ const App = () => {
       <StatusBar backgroundColor={colors.ultramarineBlue} />
       <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.wrapper}>
-          {/* <Home /> */}
-          <Profile />
+          <Home />
+          {/* <Profile /> */}
         </View>
       </SafeAreaView>
     </>
