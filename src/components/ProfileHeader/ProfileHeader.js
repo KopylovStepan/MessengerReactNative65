@@ -1,8 +1,6 @@
 import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './ProfileHeaderStyle';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
 import colors from '../../constants/colors';
 import MessengerButton from '../ui-kit/buttons/MessengerButton';
 import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
