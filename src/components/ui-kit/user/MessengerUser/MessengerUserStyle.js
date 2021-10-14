@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   user: {
     height: 43,
     flexDirection: 'row',
+    marginBottom: 12,
   },
   user__avatar: {
     height: 43,
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   user__name: {
     fontFamily: 'HKGrotesk-Bold',
     fontSize: 14,
-    color: 'red',
+    color: colors.white,
     marginBottom: 2,
   },
   user__city: {

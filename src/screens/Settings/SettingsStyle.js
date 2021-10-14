@@ -8,19 +8,10 @@ const styles = StyleSheet.create({
   },
   container: {
     width: 343,
-    marginTop: 21,
+
     marginRight: 'auto',
     marginBottom: 0,
     marginLeft: 'auto',
-  },
-  header: {
-    flexDirection: 'row',
-  },
-  header__text: {
-    fontFamily: 'HKGrotesk-Bold',
-    fontSize: 16,
-    color: colors.white,
-    marginLeft: 105,
   },
   settings: {
     marginTop: 50,

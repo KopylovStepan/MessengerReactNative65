@@ -4,12 +4,16 @@ import colors from '../../constants/colors';
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 21,
   },
   header__text: {
     fontFamily: 'HKGrotesk-Bold',
     fontSize: 16,
     color: colors.white,
-    marginLeft: 105,
+  },
+  header__void: {
+    width: 22,
   },
 });
 

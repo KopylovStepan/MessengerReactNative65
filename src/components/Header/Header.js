@@ -13,6 +13,7 @@ const Header = ({navigation, text}) => {
         <Icon name={'arrow-left'} size={22} color={colors.white} />
       </TouchableOpacity>
       <Text style={styles.header__text}>{text}</Text>
+      <Text style={styles.header__void}></Text>
     </View>
   );
 };
