@@ -75,6 +75,16 @@ const CustomDrawer = props => {
             props.navigation.navigate('Settings');
           }}
         />
+        <DrawerItem
+          icon={({color, size}) => (
+            <Icon name={'settings-cog'} size={22} color={colors.white} />
+          )}
+          label="Пост"
+          labelStyle={styles.item__text}
+          onPress={() => {
+            props.navigation.navigate('Post');
+          }}
+        />
       </DrawerContentScrollView>
     </View>
   );

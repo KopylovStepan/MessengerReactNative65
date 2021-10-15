@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     marginLeft: 'auto',
   },
-  friends: {marginTop: 30},
+  friends: {marginTop: 12},
 });
 
 export default styles;

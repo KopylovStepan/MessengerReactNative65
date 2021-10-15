@@ -107,9 +107,9 @@ const Friends = ({navigation}) => {
           data={friendsData}
           renderItem={object => (
             <MessengerUser
-              name={object.item.userName}
-              city={object.item.city}
-              img={object.item.userAvatar}
+              name={object?.item?.userName}
+              city={object?.item?.city}
+              img={object?.item?.userAvatar}
             />
           )}
           keyExtractor={item => item.id}

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
   },
   settings: {
-    marginTop: 50,
+    marginTop: 36,
   },
   settings__item: {
     flexDirection: 'row',

@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 21,
+    paddingBottom: 14,
   },
   header__text: {
     fontFamily: 'HKGrotesk-Bold',
