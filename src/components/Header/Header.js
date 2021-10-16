@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
+import React from 'react';
+import {Text, View, TouchableOpacity} from 'react-native';
 import styles from './HeaderStyle';
 import colors from '../../constants/colors';
 import {createIconSetFromIcoMoon} from 'react-native-vector-icons';

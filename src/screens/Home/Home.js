@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  ScrollView,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native';
+import {View, TouchableOpacity, FlatList} from 'react-native';
 import HomePost from '../../components/HomePost';
 import styles from './HomeStyle';
 import colors from '../../constants/colors';

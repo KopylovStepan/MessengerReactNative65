@@ -1,10 +1,6 @@
-import React, {useState} from 'react';
-import {Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
-import {
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
+import React from 'react';
+import {Text, View, Image} from 'react-native';
+import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import styles from './CustomDrawerStyle';
 import colors from '../../constants/colors';
 import {createIconSetFromIcoMoon} from 'react-native-vector-icons';

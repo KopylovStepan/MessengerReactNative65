@@ -3,7 +3,7 @@ import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   post: {
-    marginTop: 22,
+    marginTop: 10,
     marginBottom: 17,
     paddingBottom: 17,
     borderBottomWidth: 1,

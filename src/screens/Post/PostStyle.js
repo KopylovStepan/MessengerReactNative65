@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   friends: {marginTop: 30},
   footer: {
-    height: 67,
+    height: 60,
     width: 375,
   },
   footer__container: {
@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.sapphireBlue,
     marginRight: 22,
     paddingLeft: 15,
+    color: colors.pearlPurple,
+    fontFamily: 'HKGrotesk-Medium',
+    fontSize: 14,
   },
 });
 

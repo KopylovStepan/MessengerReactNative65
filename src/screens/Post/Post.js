@@ -1,14 +1,5 @@
-import React from 'react';
-import {
-  ScrollView,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  FlatList,
-  TextInput,
-} from 'react-native';
-import MessengerUser from '../../components/ui-kit/user/MessengerUser/index';
+import React, {useState} from 'react';
+import {View, TouchableOpacity, FlatList, TextInput} from 'react-native';
 import Header from '../../components/Header/index';
 import PostHeader from '../../components/PostHeader/index';
 import styles from './PostStyle';
@@ -92,7 +83,7 @@ const postData = [
 ];
 
 const Post = ({navigation}) => {
-  const [text, onChangeText] = React.useState('');
+  const [text, onChangeText] = useState('');
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
@@ -115,7 +106,9 @@ const Post = ({navigation}) => {
               placeholder="Комментарий"
               placeholderTextColor={colors.pearlPurple}
             />
-            <Icon name={'paper-airplane'} size={22} color={colors.white} />
+            <TouchableOpacity>
+              <Icon name={'paper-airplane'} size={22} color={colors.white} />
+            </TouchableOpacity>
           </View>
         </View>
       </View>

@@ -2,7 +2,6 @@ import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './PostCommentStyle';
 import colors from '../../constants/colors';
-import MessengerButton from '../ui-kit/buttons/MessengerButton';
 import PostSubcomment from './../PostSubcomment/index';
 import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
 import icoMoonConfig from './../../../selection.json';

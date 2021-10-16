@@ -2,7 +2,6 @@ import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './PostSubcommentStyle';
 import colors from '../../constants/colors';
-import MessengerButton from '../ui-kit/buttons/MessengerButton';
 import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
 import icoMoonConfig from './../../../selection.json';
 const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
