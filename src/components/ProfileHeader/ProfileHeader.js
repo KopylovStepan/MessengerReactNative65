@@ -11,6 +11,7 @@ const ProfileHeader = ({
   showProfileMoreDetails,
   showProfileMenu,
   navigation,
+  profile,
 }) => {
   return (
     <>
@@ -28,27 +29,29 @@ const ProfileHeader = ({
           style={styles.profile__avatar}
           source={require('./../../../assets/img/Avatar.png')}
         />
-        <Text style={styles.profile__name}>Kat Williams</Text>
-        <Text style={styles.profile__inst}>@Williams</Text>
-        <Text style={styles.profile__location}>Россия, Санкт-Петербург</Text>
-        <Text style={styles.profile__job}>
-          Место работы: Artist by Passion!
-        </Text>
+        <Text style={styles.profile__name}>{profile.userName}</Text>
+        <Text style={styles.profile__inst}>{profile.tag}</Text>
+        <Text style={styles.profile__location}>{profile.location}</Text>
+        <Text style={styles.profile__job}>Место работы: {profile.job}</Text>
       </View>
       <View style={styles.socialPanel}>
         <View style={styles.socialPanel__item}>
-          <Text style={styles.socialPanel__amount}>2,467</Text>
+          <Text style={styles.socialPanel__amount}>
+            {profile.followersAmount}
+          </Text>
           <Text style={styles.socialPanel__info}>Followers</Text>
         </View>
         <View style={styles.socialPanel__item}>
-          <Text style={styles.socialPanel__amount}>1,589</Text>
+          <Text style={styles.socialPanel__amount}>
+            {profile.followingAmount}
+          </Text>
           <Text style={styles.socialPanel__info}>Following</Text>
         </View>
         <MessengerButton show={showProfileMoreDetails} text={'Подробнее'} />
       </View>
       <View style={styles.info}>
         <Text style={styles.info__type}>Фотографии</Text>
-        <Text style={styles.info__amount}>245</Text>
+        <Text style={styles.info__amount}>{profile.photosAmount}</Text>
       </View>
     </>
   );
