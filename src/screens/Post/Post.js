@@ -84,6 +84,7 @@ const postData = [
 
 const Post = ({navigation}) => {
   const [text, onChangeText] = useState('');
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>

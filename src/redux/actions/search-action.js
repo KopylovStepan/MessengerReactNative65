@@ -79,21 +79,21 @@ const simulationData = [
   },
 ];
 
-export const SET_FRIENDS = 'friends/SET_FRIENDS';
-export const TOGGLE_IS_FETCHING = 'friends/TOGGLE_IS_FETCHING';
+export const SET_SEARCH_PEOPLE = 'search/SET_SEARCH_PEOPLE';
+export const TOGGLE_IS_FETCHING = 'search/TOGGLE_IS_FETCHING';
 
-const setFriendsAC = friends => {
-  return {type: SET_FRIENDS, friends};
+const setSearchPeopleAC = searchData => {
+  return {type: SET_SEARCH_PEOPLE, searchData};
 };
 
 const toggleIsFetchingAC = isFetching => {
   return {type: TOGGLE_IS_FETCHING, isFetching};
 };
 
-export const getFriends = () => dispatch => {
+export const getSearchPeople = () => dispatch => {
   dispatch(toggleIsFetchingAC(true));
   setTimeout(() => {
-    dispatch(setFriendsAC(simulationData));
+    dispatch(setSearchPeopleAC(simulationData));
     dispatch(toggleIsFetchingAC(false));
   }, 500);
 };

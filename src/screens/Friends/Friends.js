@@ -12,7 +12,7 @@ const Friends = ({navigation, friends, isFetching, getFriends}) => {
   useEffect(() => {
     getFriends();
   }, [friends]);
-  console.log(friends);
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
