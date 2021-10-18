@@ -1,5 +1,5 @@
 import {combineReducers, createStore, applyMiddleware} from 'redux';
-import profileReducer from './profile-reducer';
+import profileReducer from './reducers/profile-reducer';
 import thunk from 'redux-thunk';
 
 let reducers = combineReducers({

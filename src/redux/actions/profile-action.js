@@ -1,14 +1,14 @@
 const simulationData = {
   photos: [
-    require('./../../assets/img/Photo1.jpg'),
-    require('./../../assets/img/Photo2.jpg'),
-    require('./../../assets/img/Photo3.jpg'),
-    require('./../../assets/img/Photo4.jpg'),
-    require('./../../assets/img/Photo5.jpg'),
-    require('./../../assets/img/Photo6.jpg'),
-    require('./../../assets/img/Photo7.jpg'),
-    require('./../../assets/img/Photo8.jpg'),
-    require('./../../assets/img/Photo9.jpg'),
+    require('./../../../assets/img/Photo1.jpg'),
+    require('./../../../assets/img/Photo2.jpg'),
+    require('./../../../assets/img/Photo3.jpg'),
+    require('./../../../assets/img/Photo4.jpg'),
+    require('./../../../assets/img/Photo5.jpg'),
+    require('./../../../assets/img/Photo6.jpg'),
+    require('./../../../assets/img/Photo7.jpg'),
+    require('./../../../assets/img/Photo8.jpg'),
+    require('./../../../assets/img/Photo9.jpg'),
   ],
   photosAmount: 245,
   userName: 'Kat Williams',
@@ -27,30 +27,8 @@ const simulationData = {
   tag: '@Williams',
 };
 
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-
-let initialState = {
-  profile: {},
-  isFetching: false,
-};
-
-const profileReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_USER_PROFILE:
-      return {
-        ...state,
-        profile: action.profile,
-      };
-    case TOGGLE_IS_FETCHING:
-      return {
-        ...state,
-        isFetching: action.isFetching,
-      };
-    default:
-      return state;
-  }
-};
+export const SET_USER_PROFILE = 'SET_USER_PROFILE';
+export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 const setUserProfileAC = profile => {
   return {type: SET_USER_PROFILE, profile};
@@ -67,5 +45,3 @@ export const getUserProfile = () => dispatch => {
     dispatch(toggleIsFetchingAC(false));
   }, 500);
 };
-
-export default profileReducer;

@@ -1,22 +1,11 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {View, Image, FlatList, Text} from 'react-native';
+import {View, Image, FlatList, ActivityIndicator} from 'react-native';
 import styles from './ProfileStyle';
 import ProfileHeader from './../../components/ProfileHeader/index';
 import ProfileMoreDetails from './../../components/ProfileMoreDetails/index';
 import ProfileMenu from './../../components/ProfileMenu/index';
-
-const data = [
-  require('./../../../assets/img/Photo1.jpg'),
-  require('./../../../assets/img/Photo2.jpg'),
-  require('./../../../assets/img/Photo3.jpg'),
-  require('./../../../assets/img/Photo4.jpg'),
-  require('./../../../assets/img/Photo5.jpg'),
-  require('./../../../assets/img/Photo6.jpg'),
-  require('./../../../assets/img/Photo7.jpg'),
-  require('./../../../assets/img/Photo8.jpg'),
-  require('./../../../assets/img/Photo9.jpg'),
-];
+import colors from '../../constants/colors';
 
 const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
   useEffect(() => {
@@ -32,15 +21,15 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
   const showProfileMoreDetails = () => {
     setModalProfileDetails(true);
   };
-  console.log(`out ${profile}`);
+  // console.log(`out ${profile}`);
 
   return (
     <>
-      {isFetching ? (
-        <Text>...Загрузка</Text>
-      ) : (
-        <View style={styles.wrapper}>
-          <View style={styles.container}>
+      <View style={styles.wrapper}>
+        <View style={styles.container}>
+          {isFetching ? (
+            <ActivityIndicator size="large" color={colors.white} />
+          ) : (
             <FlatList
               style={styles.photos}
               numColumns={3}
@@ -52,7 +41,7 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
                   profile={profile}
                 />
               }
-              data={data}
+              data={profile.photos}
               renderItem={object => (
                 <Image
                   key={object.id}
@@ -62,19 +51,19 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
               )}
               keyExtractor={item => item}
             />
-          </View>
-          <Text>{console.log(`in ${profile} and ${isFetching}`)}</Text>
-          <ProfileMoreDetails
-            active={modalProfileDetails}
-            setActive={setModalProfileDetails}
-            profile={profile}
-          />
-          <ProfileMenu
-            active={modalProfileMenu}
-            setActive={setModalProfileMenu}
-          />
+          )}
         </View>
-      )}
+        {/* <Text>{console.log(`in ${profile} and ${isFetching}`)}</Text> */}
+        <ProfileMoreDetails
+          active={modalProfileDetails}
+          setActive={setModalProfileDetails}
+          profile={profile}
+        />
+        <ProfileMenu
+          active={modalProfileMenu}
+          setActive={setModalProfileMenu}
+        />
+      </View>
     </>
   );
 };

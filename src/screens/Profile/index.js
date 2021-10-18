@@ -1,7 +1,7 @@
 import Profile from './Profile';
 import {connect} from 'react-redux';
-import React, {useEffect} from 'react';
-import {getUserProfile} from './../../redux/profile-reducer';
+import React from 'react';
+import {getUserProfile} from './../../redux/actions/profile-action';
 
 const ProfileContainer = props => {
   return <Profile {...props} />;
