@@ -27,8 +27,8 @@ const simulationData = {
   tag: '@Williams',
 };
 
-export const SET_USER_PROFILE = 'SET_USER_PROFILE';
-export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+export const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
+export const TOGGLE_IS_FETCHING = 'profile/TOGGLE_IS_FETCHING';
 
 const setUserProfileAC = profile => {
   return {type: SET_USER_PROFILE, profile};

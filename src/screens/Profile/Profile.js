@@ -21,7 +21,6 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
   const showProfileMoreDetails = () => {
     setModalProfileDetails(true);
   };
-  // console.log(`out ${profile}`);
 
   return (
     <>
@@ -53,7 +52,6 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
             />
           )}
         </View>
-        {/* <Text>{console.log(`in ${profile} and ${isFetching}`)}</Text> */}
         <ProfileMoreDetails
           active={modalProfileDetails}
           setActive={setModalProfileDetails}
