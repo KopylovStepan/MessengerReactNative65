@@ -3,10 +3,7 @@ import {View, FlatList, ActivityIndicator} from 'react-native';
 import MessengerUser from '../../components/ui-kit/user/MessengerUser/index';
 import Header from '../../components/Header/index';
 import styles from './FriendsStyle';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import icoMoonConfig from './../../../selection.json';
 import colors from '../../constants/colors';
-const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
 const Friends = ({navigation, friends, isFetching, getFriends}) => {
   useEffect(() => {

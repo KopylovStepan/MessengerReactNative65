@@ -1,4 +1,4 @@
-import {SET_POSTS, TOGGLE_IS_FETCHING} from './../actions/home-action';
+import {SET_POSTS, TOGGLE_IS_FETCHING} from './../types/home-types';
 
 let initialState = {
   posts: [],

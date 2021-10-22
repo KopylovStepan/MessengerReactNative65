@@ -3,27 +3,46 @@ import {Text, View, TouchableOpacity} from 'react-native';
 import styles from './SettingsStyle';
 import colors from '../../constants/colors';
 import Header from '../../components/Header/index';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import icoMoonConfig from './../../../selection.json';
-const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
+import Icon from '../../components/Icon/Icon';
 
 const Settings = ({navigation}) => {
+  const item = (nameIcon, text, color, styleText) => {
+    return (
+      <>
+        <Icon name={nameIcon} size={22} color={color} />
+        <Text style={styleText}>{text}</Text>
+      </>
+    );
+  };
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
         <Header navigation={navigation} text={'Настройки'} />
         <View style={styles.settings}>
           <TouchableOpacity style={styles.settings__item}>
-            <Icon name={'color-swatch'} size={22} color={colors.white} />
-            <Text style={styles.settings__text}>Внешний вид</Text>
+            {item(
+              'color-swatch',
+              'Внешний вид',
+              colors.white,
+              styles.settings__text,
+            )}
           </TouchableOpacity>
           <TouchableOpacity style={styles.settings__item}>
-            <Icon name={'information-circle'} size={22} color={colors.white} />
-            <Text style={styles.settings__text}>О приложении</Text>
+            {item(
+              'information-circle',
+              'О приложении',
+              colors.white,
+              styles.settings__text,
+            )}
           </TouchableOpacity>
           <TouchableOpacity style={styles.settings__item}>
-            <Icon name={'logout'} size={22} color={colors.pearlPurple} />
-            <Text style={styles.settings__textOut}>Выйти</Text>
+            {item(
+              'logout',
+              'Выйти',
+              colors.pearlPurple,
+              styles.settings__textOut,
+            )}
           </TouchableOpacity>
         </View>
       </View>

@@ -1,3 +1,5 @@
+import {SET_POSTS, TOGGLE_IS_FETCHING} from './../types/home-types';
+
 const simulationData = [
   {
     id: 1,
@@ -44,9 +46,6 @@ const simulationData = [
     postText: 'Как',
   },
 ];
-
-export const SET_POSTS = 'home/SET_POSTS';
-export const TOGGLE_IS_FETCHING = 'home/TOGGLE_IS_FETCHING';
 
 const setPostsAC = posts => {
   return {type: SET_POSTS, posts};

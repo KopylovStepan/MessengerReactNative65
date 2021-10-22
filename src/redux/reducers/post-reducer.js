@@ -1,4 +1,4 @@
-import {SET_POST, TOGGLE_IS_FETCHING} from './../actions/post-action.js';
+import {SET_POST, TOGGLE_IS_FETCHING} from './../types/post-types';
 
 let initialState = {
   post: [],

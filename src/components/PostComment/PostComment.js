@@ -3,9 +3,7 @@ import {Text, View, Image, TouchableOpacity} from 'react-native';
 import styles from './PostCommentStyle';
 import colors from '../../constants/colors';
 import PostSubcomment from './../PostSubcomment/index';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import icoMoonConfig from './../../../selection.json';
-const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
+import Icon from '../Icon/Icon';
 
 const PostComment = ({item}) => {
   return (
@@ -42,7 +40,7 @@ const PostComment = ({item}) => {
         </View>
       </View>
       <View style={styles.subcomments}>
-        {item.subcomments.map(element => {
+        {item?.subcomments.map(element => {
           return <PostSubcomment key={element.id} subcomment={element} />;
         })}
       </View>

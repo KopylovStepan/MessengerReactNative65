@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.sapphireBlue,
     marginRight: 22,
     paddingLeft: 15,
-    color: colors.pearlPurple,
+    color: colors.white,
     fontFamily: 'HKGrotesk-Medium',
     fontSize: 14,
   },

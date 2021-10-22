@@ -1,3 +1,5 @@
+import {SET_FRIENDS, TOGGLE_IS_FETCHING} from './../types/friends-types';
+
 const simulationData = [
   {
     id: 1,
@@ -78,9 +80,6 @@ const simulationData = [
     city: 'Санкт-Петербург',
   },
 ];
-
-export const SET_FRIENDS = 'friends/SET_FRIENDS';
-export const TOGGLE_IS_FETCHING = 'friends/TOGGLE_IS_FETCHING';
 
 const setFriendsAC = friends => {
   return {type: SET_FRIENDS, friends};

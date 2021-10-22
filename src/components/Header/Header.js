@@ -2,9 +2,7 @@ import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import styles from './HeaderStyle';
 import colors from '../../constants/colors';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import icoMoonConfig from './../../../selection.json';
-const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
+import Icon from '../Icon/Icon';
 
 const Header = ({navigation, text}) => {
   return (

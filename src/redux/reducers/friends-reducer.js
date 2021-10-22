@@ -1,4 +1,4 @@
-import {SET_FRIENDS, TOGGLE_IS_FETCHING} from './../actions/friends-action';
+import {SET_FRIENDS, TOGGLE_IS_FETCHING} from './../types/friends-types';
 
 let initialState = {
   friends: [],

@@ -1,3 +1,5 @@
+import {SET_USER_PROFILE, TOGGLE_IS_FETCHING} from './../types/profile-types';
+
 const simulationData = {
   photos: [
     require('./../../../assets/img/Photo1.jpg'),
@@ -26,9 +28,6 @@ const simulationData = {
   paper: 'durov',
   tag: '@Williams',
 };
-
-export const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
-export const TOGGLE_IS_FETCHING = 'profile/TOGGLE_IS_FETCHING';
 
 const setUserProfileAC = profile => {
   return {type: SET_USER_PROFILE, profile};

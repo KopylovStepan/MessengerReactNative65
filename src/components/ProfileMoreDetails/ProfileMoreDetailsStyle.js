@@ -49,11 +49,6 @@ const styles = StyleSheet.create({
   contacts__header: {
     marginBottom: 15,
   },
-  contacts__item: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
   contacts__text: {
     width: 303,
     marginLeft: 12,

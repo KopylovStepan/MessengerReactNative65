@@ -1,7 +1,4 @@
-import {
-  SET_USER_PROFILE,
-  TOGGLE_IS_FETCHING,
-} from './../actions/profile-action';
+import {SET_USER_PROFILE, TOGGLE_IS_FETCHING} from './../types/profile-types';
 
 let initialState = {
   profile: {},

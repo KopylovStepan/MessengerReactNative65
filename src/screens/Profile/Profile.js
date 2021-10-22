@@ -23,46 +23,41 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
   };
 
   return (
-    <>
-      <View style={styles.wrapper}>
-        <View style={styles.container}>
-          {isFetching ? (
-            <ActivityIndicator size="large" color={colors.white} />
-          ) : (
-            <FlatList
-              style={styles.photos}
-              numColumns={3}
-              ListHeaderComponent={
-                <ProfileHeader
-                  showProfileMenu={showProfileMenu}
-                  showProfileMoreDetails={showProfileMoreDetails}
-                  navigation={navigation}
-                  profile={profile}
-                />
-              }
-              data={profile.photos}
-              renderItem={object => (
-                <Image
-                  key={object.id}
-                  style={styles.photo}
-                  source={object.item}
-                />
-              )}
-              keyExtractor={item => item}
-            />
-          )}
-        </View>
-        <ProfileMoreDetails
-          active={modalProfileDetails}
-          setActive={setModalProfileDetails}
-          profile={profile}
-        />
-        <ProfileMenu
-          active={modalProfileMenu}
-          setActive={setModalProfileMenu}
-        />
+    <View style={styles.wrapper}>
+      <View style={styles.container}>
+        {isFetching ? (
+          <ActivityIndicator size="large" color={colors.white} />
+        ) : (
+          <FlatList
+            style={styles.photos}
+            numColumns={3}
+            ListHeaderComponent={
+              <ProfileHeader
+                showProfileMenu={showProfileMenu}
+                showProfileMoreDetails={showProfileMoreDetails}
+                navigation={navigation}
+                profile={profile}
+              />
+            }
+            data={profile.photos}
+            renderItem={object => (
+              <Image
+                key={object.id}
+                style={styles.photo}
+                source={object.item}
+              />
+            )}
+            keyExtractor={item => item}
+          />
+        )}
       </View>
-    </>
+      <ProfileMoreDetails
+        active={modalProfileDetails}
+        setActive={setModalProfileDetails}
+        profile={profile}
+      />
+      <ProfileMenu active={modalProfileMenu} setActive={setModalProfileMenu} />
+    </View>
   );
 };
 

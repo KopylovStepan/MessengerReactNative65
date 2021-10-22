@@ -3,13 +3,20 @@ import {Modal, TouchableOpacity, View, Text, StatusBar} from 'react-native';
 import MessengerTextHeadline from './../ui-kit/text/MessengerTextHeadline/index';
 import styles from './ProfileMenuStyle';
 import colors from '../../constants/colors';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import icoMoonConfig from './../../../selection.json';
-const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
+import Icon from '../Icon/Icon';
 
 const ProfileMenu = ({active, setActive}) => {
   const close = () => {
     setActive(false);
+  };
+
+  const item = (nameIcon, text) => {
+    return (
+      <>
+        <Icon name={nameIcon} size={22} color={colors.white} />
+        <Text style={styles.window__text}>{text}</Text>
+      </>
+    );
   };
   return (
     <Modal
@@ -21,12 +28,10 @@ const ProfileMenu = ({active, setActive}) => {
       <View style={styles.container}>
         <View style={styles.window}>
           <TouchableOpacity style={styles.window__itemShare}>
-            <Icon name="share" size={22} color={colors.white} />
-            <Text style={styles.window__text}>Поделиться</Text>
+            {item('share', 'Поделиться')}
           </TouchableOpacity>
           <TouchableOpacity style={styles.window__itemCopy}>
-            <Icon name="document-duplicate" size={22} color={colors.white} />
-            <Text style={styles.window__text}>Скопировать ссылку</Text>
+            {item('document-duplicate', 'Скопировать ссылку')}
           </TouchableOpacity>
         </View>
         <TouchableOpacity onPress={close} style={styles.window__itemClose}>

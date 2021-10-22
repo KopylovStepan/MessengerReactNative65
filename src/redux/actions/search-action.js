@@ -1,3 +1,5 @@
+import {SET_SEARCH_PEOPLE, TOGGLE_IS_FETCHING} from './../types/search-types';
+
 const simulationData = [
   {
     id: 1,
@@ -78,9 +80,6 @@ const simulationData = [
     city: 'Санкт-Петербург',
   },
 ];
-
-export const SET_SEARCH_PEOPLE = 'search/SET_SEARCH_PEOPLE';
-export const TOGGLE_IS_FETCHING = 'search/TOGGLE_IS_FETCHING';
 
 const setSearchPeopleAC = searchData => {
   return {type: SET_SEARCH_PEOPLE, searchData};

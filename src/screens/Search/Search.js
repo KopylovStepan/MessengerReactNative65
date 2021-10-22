@@ -10,9 +10,7 @@ import {
 import MessengerUser from '../../components/ui-kit/user/MessengerUser/index';
 import styles from './SearchStyle';
 import colors from '../../constants/colors';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import icoMoonConfig from './../../../selection.json';
-const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
+import Icon from '../../components/Icon/Icon';
 
 const Search = ({navigation, isFetching, searchData, getSearchPeople}) => {
   const [text, onChangeText] = useState('');

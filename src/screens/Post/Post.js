@@ -8,12 +8,10 @@ import {
 } from 'react-native';
 import Header from '../../components/Header/index';
 import PostHeader from '../../components/PostHeader/index';
+import PostComment from '../../components/PostComment/index';
 import styles from './PostStyle';
 import colors from '../../constants/colors';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import icoMoonConfig from './../../../selection.json';
-import PostComment from '../../components/PostComment/index';
-const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
+import Icon from '../../components/Icon/Icon';
 
 const Post = ({navigation, getPost, post, isFetching}) => {
   const [text, onChangeText] = useState('');

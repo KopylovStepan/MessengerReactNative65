@@ -3,9 +3,7 @@ import {Text, View, Image} from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import styles from './CustomDrawerStyle';
 import colors from '../../constants/colors';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import icoMoonConfig from './../../../selection.json';
-const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
+import Icon from '../Icon/Icon';
 
 const CustomDrawer = props => {
   return (

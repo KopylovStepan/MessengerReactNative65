@@ -1,7 +1,4 @@
-import {
-  SET_SEARCH_PEOPLE,
-  TOGGLE_IS_FETCHING,
-} from './../actions/search-action';
+import {SET_SEARCH_PEOPLE, TOGGLE_IS_FETCHING} from './../types/search-types';
 
 let initialState = {
   searchData: [],

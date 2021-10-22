@@ -1,3 +1,5 @@
+import {SET_POST, TOGGLE_IS_FETCHING} from './../types/post-types';
+
 const simulationData = [
   {
     id: 1,
@@ -70,9 +72,6 @@ const simulationData = [
     ],
   },
 ];
-
-export const SET_POST = 'post/SET_POST';
-export const TOGGLE_IS_FETCHING = 'post/TOGGLE_IS_FETCHING';
 
 const setPostAC = post => {
   return {type: SET_POST, post};

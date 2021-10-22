@@ -8,9 +8,7 @@ import {
 import HomePost from '../../components/HomePost';
 import styles from './HomeStyle';
 import colors from '../../constants/colors';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import icoMoonConfig from './../../../selection.json';
-const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
+import Icon from '../../components/Icon/Icon';
 
 const Home = ({navigation, posts, isFetching, getPosts}) => {
   useEffect(() => {
