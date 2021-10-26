@@ -2,6 +2,11 @@ import {StyleSheet} from 'react-native';
 import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
+  container: {
+    width: 343,
+    marginRight: 'auto',
+    marginLeft: 'auto',
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',

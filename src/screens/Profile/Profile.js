@@ -68,7 +68,7 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
                 profile={simulationData}
               />
             }
-            data={profile.photos}
+            data={simulationData.photos}
             renderItem={object => (
               <Image
                 key={object.id}

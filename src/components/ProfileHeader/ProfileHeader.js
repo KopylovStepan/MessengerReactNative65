@@ -12,7 +12,7 @@ const ProfileHeader = ({
   profile,
 }) => {
   return (
-    <>
+    <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Icon name={'arrow-left'} size={22} color={colors.white} />
@@ -51,7 +51,7 @@ const ProfileHeader = ({
         <Text style={styles.info__type}>Фотографии</Text>
         <Text style={styles.info__amount}>{profile.photosAmount}</Text>
       </View>
-    </>
+    </View>
   );
 };
 
