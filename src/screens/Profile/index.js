@@ -1,7 +1,6 @@
 import Profile from './Profile';
 import {connect} from 'react-redux';
 import React from 'react';
-import {getUserProfile} from './../../redux/actions/profile-action';
 
 const ProfileContainer = props => {
   return <Profile {...props} />;
@@ -15,9 +14,7 @@ let mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    getUserProfile: () => dispatch(getUserProfile()),
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

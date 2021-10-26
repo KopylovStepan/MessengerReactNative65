@@ -1,10 +1,13 @@
 import {combineReducers, createStore, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import profileReducer from './reducers/profile-reducer';
 import friendsReducer from './reducers/friends-reducer';
 import homeReducer from './reducers/home-reducer';
 import searchReducer from './reducers/search-reducer';
 import postReducer from './reducers/post-reducer';
-import thunk from 'redux-thunk';
+import rootSaga from './sagas/index';
+
+const sagaMiddleware = createSagaMiddleware();
 
 let reducers = combineReducers({
   profilePage: profileReducer,
@@ -14,4 +17,8 @@ let reducers = combineReducers({
   postPage: postReducer,
 });
 
-export const store = createStore(reducers, applyMiddleware(thunk));
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(rootSaga);
+
+export default store;

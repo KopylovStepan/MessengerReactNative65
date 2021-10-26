@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
-import {store} from './src/redux/store';
+import store from './src/redux/store';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import Profile from './src/screens/Profile/index';

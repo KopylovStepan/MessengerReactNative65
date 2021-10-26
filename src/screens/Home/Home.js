@@ -10,10 +10,57 @@ import styles from './HomeStyle';
 import colors from '../../constants/colors';
 import Icon from '../../components/Icon/Icon';
 
+const simulationData = [
+  {
+    id: 1,
+    userName: 'Kate Williams',
+    userAvatar: require('./../../../assets/img/postAvatar.jpg'),
+    postTime: '1h ago',
+    likesAmount: 8998,
+    commentsAmount: 145,
+    images: [
+      require('./../../../assets/img/postImage.jpg'),
+      require('./../../../assets/img/postImage2.jpg'),
+      require('./../../../assets/img/postImage3.jpg'),
+    ],
+    postText: '',
+  },
+  {
+    id: 2,
+    userName: 'Tony Monta',
+    userAvatar: require('./../../../assets/img/postAvatar.jpg'),
+    postTime: '8h ago',
+    likesAmount: 8998,
+    commentsAmount: 145,
+    images: null,
+    postText: 'Writing code is not so bad!',
+  },
+  {
+    id: 3,
+    userName: 'Tony Monta',
+    userAvatar: require('./../../../assets/img/postAvatar.jpg'),
+    postTime: '1h ago',
+    likesAmount: 8998,
+    commentsAmount: 145,
+    images: [require('./../../../assets/img/postImage.jpg')],
+    postText: '',
+  },
+  {
+    id: 4,
+    userName: 'Tony Monta',
+    userAvatar: require('./../../../assets/img/postAvatar.jpg'),
+    postTime: '1h ago',
+    likesAmount: 8998,
+    commentsAmount: 145,
+    images: [require('./../../../assets/img/postImage.jpg')],
+    postText: 'Как',
+  },
+];
+
 const Home = ({navigation, posts, isFetching, getPosts}) => {
-  useEffect(() => {
-    getPosts();
-  }, [posts]);
+  // useEffect(() => {
+  //   getPosts();
+  // }, [posts]);
 
   return (
     <View style={styles.wrapper}>
@@ -38,7 +85,7 @@ const Home = ({navigation, posts, isFetching, getPosts}) => {
         ) : (
           <FlatList
             style={styles.posts}
-            data={posts}
+            data={simulationData}
             renderItem={object => <HomePost item={object.item} />}
             keyExtractor={item => item.id}
           />

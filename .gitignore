@@ -29,6 +29,8 @@ build/
 local.properties
 *.iml
 
+apikey.js
+.env
 # node.js
 #
 node_modules/

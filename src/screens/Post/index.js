@@ -1,7 +1,6 @@
 import Post from './Post';
 import {connect} from 'react-redux';
 import React from 'react';
-import {getPost} from '../../redux/actions/post-action';
 
 const PostContainer = props => {
   return <Post {...props} />;
@@ -15,9 +14,7 @@ let mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    getPost: () => dispatch(getPost()),
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostContainer);
