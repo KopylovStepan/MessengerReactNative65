@@ -1,12 +1,10 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
 import {View, Image, FlatList, ActivityIndicator} from 'react-native';
 import styles from './ProfileStyle';
 import ProfileHeader from './../../components/ProfileHeader/index';
 import ProfileMoreDetails from './../../components/ProfileMoreDetails/index';
 import ProfileMenu from './../../components/ProfileMenu/index';
-import {LOAD_PROFILE_INFO} from './../../redux/types/profile-types';
 import colors from '../../constants/colors';
 
 const simulationData = {
@@ -43,11 +41,10 @@ const Profile = ({
   profilePhotos,
   profileInfo,
   loading,
-  getUserProfile,
+  getUserProfileInfo,
 }) => {
-  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({type: LOAD_PROFILE_INFO});
+    getUserProfileInfo();
   }, []);
 
   const [modalProfileDetails, setModalProfileDetails] = useState(false);

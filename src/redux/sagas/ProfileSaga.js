@@ -15,6 +15,6 @@ function* loadProfileData() {
   yield put({type: LOAD_PROFILE_INFO_SUCCESS, profileInfo: data.response[0]});
 }
 
-export default function* profileSaga() {
+export default function* profileSagaInfo() {
   yield takeEvery(LOAD_PROFILE_INFO, loadProfileData);
 }

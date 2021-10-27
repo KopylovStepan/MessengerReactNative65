@@ -1,8 +1,8 @@
 import {fork, all, spawn, call} from 'redux-saga/effects';
-import profileSaga from './ProfileSaga';
+import profileSagaInfo from './ProfileSaga';
 
 export default function* rootSaga() {
-  const sagas = [profileSaga];
+  const sagas = [profileSagaInfo];
 
   const retrySagas = yield sagas.map(saga => {
     return spawn(function* () {
