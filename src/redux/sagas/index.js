@@ -1,17 +1,21 @@
-import {fork} from 'redux-saga/effects';
-
-export function saga1() {
-  console.log('saga1');
-}
-export function saga2() {
-  console.log('saga2');
-}
-export function saga3() {
-  console.log('saga3');
-}
+import {fork, all, spawn, call} from 'redux-saga/effects';
+import profileSaga from './ProfileSaga';
 
 export default function* rootSaga() {
-  yield fork(saga1);
-  yield fork(saga2);
-  yield fork(saga3);
+  const sagas = [profileSaga];
+
+  const retrySagas = yield sagas.map(saga => {
+    return spawn(function* () {
+      while (true) {
+        try {
+          yield call(saga);
+          break;
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    });
+  });
+
+  yield all(retrySagas);
 }

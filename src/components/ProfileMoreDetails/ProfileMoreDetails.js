@@ -35,20 +35,23 @@ const ProfileMoreDetails = ({active, setActive, profile}) => {
                 <Icon name="backspace" size={13} color={colors.pearlPurple} />
               </TouchableOpacity>
             </View>
-            {item('chat', profile.status)}
-            {item('cake', `День рождения: ${profile.birthday}`)}
-            {item('location-marker', `Город: ${profile.location}`)}
-            {item('briefcase', profile.education)}
+            {item('chat', profile?.status)}
+            {item('cake', `День рождения: ${profile?.bdate}`)}
+            {item(
+              'location-marker',
+              `Город: ${profile?.country?.title}, ${profile?.city?.title}`,
+            )}
+            {item('briefcase', profile?.university_name)}
           </View>
           <View style={styles.contacts}>
             <View style={styles.contacts__header}>
               <MessengerTextHeadline text={'Контакты'} />
             </View>
-            {item('arrow-up-right', profile.telegram)}
-            {item('twitter', profile.twitter)}
-            {item('instagram', profile.instagram)}
-            {item('facebook', profile.facebook)}
-            {item('telegram', profile.paper)}
+            {item('arrow-up-right', profile?.exports?.telegram)}
+            {item('twitter', profile?.exports?.twitter)}
+            {item('instagram', profile?.exports?.instagram)}
+            {item('facebook', profile?.exports?.facebook)}
+            {item('telegram', profile?.exports?.paper)}
           </View>
         </View>
       </View>

@@ -1,10 +1,12 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 import {View, Image, FlatList, ActivityIndicator} from 'react-native';
 import styles from './ProfileStyle';
 import ProfileHeader from './../../components/ProfileHeader/index';
 import ProfileMoreDetails from './../../components/ProfileMoreDetails/index';
 import ProfileMenu from './../../components/ProfileMenu/index';
+import {LOAD_PROFILE_INFO} from './../../redux/types/profile-types';
 import colors from '../../constants/colors';
 
 const simulationData = {
@@ -36,10 +38,17 @@ const simulationData = {
   tag: '@Williams',
 };
 
-const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
-  // useEffect(() => {
-  //   getUserProfile();
-  // }, [profile]);
+const Profile = ({
+  navigation,
+  profilePhotos,
+  profileInfo,
+  loading,
+  getUserProfile,
+}) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({type: LOAD_PROFILE_INFO});
+  }, []);
 
   const [modalProfileDetails, setModalProfileDetails] = useState(false);
   const [modalProfileMenu, setModalProfileMenu] = useState(false);
@@ -54,7 +63,7 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
-        {isFetching ? (
+        {loading ? (
           <ActivityIndicator size="large" color={colors.white} />
         ) : (
           <FlatList
@@ -65,7 +74,7 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
                 showProfileMenu={showProfileMenu}
                 showProfileMoreDetails={showProfileMoreDetails}
                 navigation={navigation}
-                profile={simulationData}
+                profile={profileInfo}
               />
             }
             data={simulationData.photos}
@@ -83,7 +92,7 @@ const Profile = ({navigation, profile, isFetching, getUserProfile}) => {
       <ProfileMoreDetails
         active={modalProfileDetails}
         setActive={setModalProfileDetails}
-        profile={simulationData}
+        profile={profileInfo}
       />
       <ProfileMenu active={modalProfileMenu} setActive={setModalProfileMenu} />
     </View>

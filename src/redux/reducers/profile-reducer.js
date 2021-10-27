@@ -1,21 +1,37 @@
-import {SET_USER_PROFILE, TOGGLE_IS_FETCHING} from './../types/profile-types';
+import {
+  LOAD_PROFILE_INFO,
+  LOAD_PROFILE_INFO_SUCCESS,
+  LOAD_PROFILE_INFO_FAILURE,
+  LOAD_PROFILE_PHOTOS,
+  LOAD_PROFILE_PHOTOS_SUCCESS,
+  LOAD_PROFILE_PHOTOS_FAILURE,
+} from './../types/profile-types';
 
 let initialState = {
-  profile: {},
-  isFetching: false,
+  profileInfo: {},
+  profilePhotos: {},
+  loading: false,
+  error: '',
 };
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USER_PROFILE:
+    case LOAD_PROFILE_INFO:
       return {
         ...state,
-        profile: action.profile,
+        loading: true,
       };
-    case TOGGLE_IS_FETCHING:
+    case LOAD_PROFILE_INFO_SUCCESS:
       return {
         ...state,
-        isFetching: action.isFetching,
+        profileInfo: action.profileInfo,
+        loading: false,
+      };
+    case LOAD_PROFILE_INFO_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
       };
     default:
       return state;

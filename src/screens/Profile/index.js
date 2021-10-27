@@ -8,8 +8,9 @@ const ProfileContainer = props => {
 
 let mapStateToProps = state => {
   return {
-    profile: state.profilePage.profile,
-    isFetching: state.profilePage.isFetching,
+    profileInfo: state.profilePage.profileInfo,
+    profilePhotos: state.profilePage.profilePhotos,
+    loading: state.profilePage.loading,
   };
 };
 

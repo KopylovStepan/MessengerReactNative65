@@ -25,23 +25,27 @@ const ProfileHeader = ({
       <View style={styles.profile}>
         <Image
           style={styles.profile__avatar}
-          source={require('./../../../assets/img/Avatar.png')}
+          source={{uri: profile?.photo_100}}
         />
-        <Text style={styles.profile__name}>{profile.userName}</Text>
-        <Text style={styles.profile__inst}>{profile.tag}</Text>
-        <Text style={styles.profile__location}>{profile.location}</Text>
-        <Text style={styles.profile__job}>Место работы: {profile.job}</Text>
+        <Text style={styles.profile__name}>
+          {profile?.first_name} {profile?.last_name}
+        </Text>
+        <Text style={styles.profile__inst}>@{profile?.domain}</Text>
+        <Text style={styles.profile__location}>
+          {profile?.country?.title}, {profile?.city?.title}
+        </Text>
+        <Text style={styles.profile__job}>Место работы: {profile?.career}</Text>
       </View>
       <View style={styles.socialPanel}>
         <View style={styles.socialPanel__item}>
           <Text style={styles.socialPanel__amount}>
-            {profile.followersAmount}
+            {profile?.counters?.followers}
           </Text>
           <Text style={styles.socialPanel__info}>Followers</Text>
         </View>
         <View style={styles.socialPanel__item}>
           <Text style={styles.socialPanel__amount}>
-            {profile.followingAmount}
+            {profile?.counters?.friends}
           </Text>
           <Text style={styles.socialPanel__info}>Following</Text>
         </View>
@@ -49,7 +53,7 @@ const ProfileHeader = ({
       </View>
       <View style={styles.info}>
         <Text style={styles.info__type}>Фотографии</Text>
-        <Text style={styles.info__amount}>{profile.photosAmount}</Text>
+        <Text style={styles.info__amount}>{profile?.counters?.photos}</Text>
       </View>
     </View>
   );
