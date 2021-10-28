@@ -9,8 +9,9 @@ import {
 
 let initialState = {
   profileInfo: {},
-  profilePhotos: {},
-  loading: false,
+  profilePhotos: [],
+  loadingInfo: false,
+  loadingPhotos: false,
   error: '',
 };
 
@@ -19,19 +20,36 @@ const profileReducer = (state = initialState, action) => {
     case LOAD_PROFILE_INFO:
       return {
         ...state,
-        loading: true,
+        loadingInfo: true,
       };
     case LOAD_PROFILE_INFO_SUCCESS:
       return {
         ...state,
         profileInfo: action.profileInfo,
-        loading: false,
+        loadingInfo: false,
       };
     case LOAD_PROFILE_INFO_FAILURE:
       return {
         ...state,
-        error: action.payload,
-        loading: false,
+        error: action.error,
+        loadingInfo: false,
+      };
+    case LOAD_PROFILE_PHOTOS:
+      return {
+        ...state,
+        loadingPhotos: true,
+      };
+    case LOAD_PROFILE_PHOTOS_SUCCESS:
+      return {
+        ...state,
+        profilePhotos: action.profilePhotos,
+        loadingPhotos: false,
+      };
+    case LOAD_PROFILE_PHOTOS_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        loadingPhotos: false,
       };
     default:
       return state;
