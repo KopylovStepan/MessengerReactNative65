@@ -1,2 +1,3 @@
-export const SET_FRIENDS = 'friends/SET_FRIENDS';
-export const TOGGLE_IS_FETCHING = 'friends/TOGGLE_IS_FETCHING';
+export const LOAD_FRIENDS = 'friends/LOAD_FRIENDS';
+export const LOAD_FRIENDS_SUCCESS = 'friends/LOAD_FRIENDS_SUCCESS';
+export const LOAD_FRIENDS_FAILURE = 'friends/LOAD_FRIENDS_FAILURE';

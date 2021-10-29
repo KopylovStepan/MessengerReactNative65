@@ -1,21 +1,33 @@
-import {SET_FRIENDS, TOGGLE_IS_FETCHING} from './../types/friends-types';
+import {
+  LOAD_FRIENDS,
+  LOAD_FRIENDS_SUCCESS,
+  LOAD_FRIENDS_FAILURE,
+} from './../types/friends-types';
 
 let initialState = {
   friends: [],
-  isFetching: false,
+  loading: false,
+  error: '',
 };
 
 const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_FRIENDS:
+    case LOAD_FRIENDS:
+      return {
+        ...state,
+        loading: true,
+      };
+    case LOAD_FRIENDS_SUCCESS:
       return {
         ...state,
         friends: action.friends,
+        loading: false,
       };
-    case TOGGLE_IS_FETCHING:
+    case LOAD_FRIENDS_FAILURE:
       return {
         ...state,
-        isFetching: action.isFetching,
+        error: action.error,
+        loading: false,
       };
     default:
       return state;

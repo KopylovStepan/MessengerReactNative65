@@ -86,26 +86,26 @@ const simulationData = [
   },
 ];
 
-const Friends = ({navigation, friends, isFetching, getFriends}) => {
-  // useEffect(() => {
-  //   getFriends();
-  // }, [friends]);
-
+const Friends = ({navigation, friends, loading, getFriends}) => {
+  useEffect(() => {
+    getFriends();
+  }, []);
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
         <Header text={'Друзья'} navigation={navigation} />
-        {isFetching ? (
+        {loading ? (
           <ActivityIndicator size="large" color={colors.white} />
         ) : (
           <FlatList
             style={styles.friends}
-            data={simulationData}
+            data={friends}
             renderItem={object => (
               <MessengerUser
-                name={object?.item?.userName}
-                city={object?.item?.city}
-                img={object?.item?.userAvatar}
+                firstName={object?.item?.first_name}
+                lastName={object?.item?.last_name}
+                city={object?.item?.city?.title}
+                img={object?.item?.photo_50}
               />
             )}
             keyExtractor={item => item.id}
