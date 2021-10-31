@@ -106,22 +106,43 @@ const simulationData = [
   },
 ];
 
-const Search = ({navigation, isFetching, searchData, getSearchPeople}) => {
+const Search = ({
+  navigation,
+  loading,
+  allData,
+  peopleData,
+  groupsData,
+  getSearchAll,
+  getSearchPeople,
+  getSearchGroups,
+}) => {
   const [text, onChangeText] = useState('');
   const [active, setActive] = useState('Все');
 
-  // useEffect(() => {
-  //   getSearchPeople();
-  // }, [searchData]);
+  useEffect(() => {
+    getSearchAll();
+  }, []);
 
   const setActiveAll = () => {
     setActive('Все');
+    getSearchAll(text);
   };
   const setActivePeople = () => {
     setActive('Люди');
+    getSearchPeople(text);
   };
   const setActiveGroups = () => {
     setActive('Сообщества');
+    getSearchGroups(text);
+  };
+  const enterSearchText = () => {
+    if (active === 'Все') {
+      getSearchAll(text);
+    } else if (active === 'Люди') {
+      getSearchPeople(text);
+    } else if (active === 'Сообщества') {
+      getSearchGroups(text);
+    }
   };
 
   return (
@@ -141,6 +162,7 @@ const Search = ({navigation, isFetching, searchData, getSearchPeople}) => {
               value={text}
               placeholder="Поиск"
               placeholderTextColor={colors.pearlPurple}
+              onSubmitEditing={enterSearchText}
             />
           </View>
         </View>
@@ -194,20 +216,47 @@ const Search = ({navigation, isFetching, searchData, getSearchPeople}) => {
             </Text>
           </TouchableOpacity>
         </View>
-        {isFetching ? (
+        {loading ? (
           <ActivityIndicator size="large" color={colors.white} />
         ) : (
           <FlatList
             style={styles.search}
-            data={simulationData}
+            data={
+              active === 'Все'
+                ? allData
+                : active === 'Люди'
+                ? peopleData
+                : active === 'Сообщества'
+                ? groupsData
+                : null
+            }
             renderItem={object => (
               <MessengerUser
-                name={object?.item?.userName}
-                city={object?.item?.city}
-                img={object?.item?.userAvatar}
+                firstName={
+                  object?.item?.first_name ||
+                  object?.item?.name ||
+                  object?.item?.profile?.first_name ||
+                  object?.item?.group?.name ||
+                  object?.item?.app?.title
+                }
+                lastName={
+                  object?.item?.last_name || object?.item?.profile?.last_name
+                }
+                city={
+                  object?.item?.city?.title ||
+                  object?.item?.profile?.city?.title
+                }
+                img={
+                  object?.item?.photo_50 ||
+                  object?.item?.profile?.photo_50 ||
+                  object?.item?.group?.photo_50 ||
+                  object?.item?.app?.icon_75
+                }
               />
             )}
-            keyExtractor={item => item.id}
+            keyExtractor={item =>
+              item?.id || item?.profile?.id || item?.group?.id || item?.app?.id
+            }
           />
         )}
       </View>
