@@ -1,21 +1,33 @@
-import {SET_POSTS, TOGGLE_IS_FETCHING} from './../types/home-types';
+import {
+  LOAD_POSTS,
+  LOAD_POSTS_SUCCESS,
+  LOAD_POSTS_FAILURE,
+} from './../types/home-types';
 
 let initialState = {
-  posts: [],
-  isFetching: false,
+  posts: {},
+  loading: false,
+  error: '',
 };
 
 const homeReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_POSTS:
+    case LOAD_POSTS:
+      return {
+        ...state,
+        loading: true,
+      };
+    case LOAD_POSTS_SUCCESS:
       return {
         ...state,
         posts: action.posts,
+        loading: false,
       };
-    case TOGGLE_IS_FETCHING:
+    case LOAD_POSTS_FAILURE:
       return {
         ...state,
-        isFetching: action.isFetching,
+        error: action.error,
+        loading: false,
       };
     default:
       return state;

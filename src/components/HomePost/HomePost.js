@@ -4,6 +4,17 @@ import styles from './HomePostStyle';
 import colors from '../../constants/colors';
 import Icon from '../Icon/Icon';
 
+function timeConverter(UNIX_time) {
+  let a = new Date(UNIX_time * 1000);
+  let year = a.getFullYear();
+  let month = a.getMonth();
+  let date = a.getDate();
+  let hour = a.getHours();
+  let min = a.getMinutes() < 10 ? '0' + a.getMinutes() : a.getMinutes();
+  let time = `${date}.${month}.${year} в ${hour}:${min}`;
+  return time;
+}
+
 const HomePost = ({item}) => {
   const [imgActive, setImgActive] = useState(0);
   const onChange = nativeEvent => {
@@ -20,10 +31,12 @@ const HomePost = ({item}) => {
     <View style={styles.post}>
       <View style={styles.post__header}>
         <View style={styles.post__user}>
-          <Image style={styles.post__avatar} source={item.userAvatar} />
+          <Image style={styles.post__avatar} source={{uri: item.photo_50}} />
           <View style={styles.post__userInfo}>
-            <Text style={styles.post__userName}>{item.userName}</Text>
-            <Text style={styles.post__time}>{item.postTime}</Text>
+            <Text style={styles.post__userName}>
+              {item.name ? item.name : `${item.first_name} ${item.last_name}`}
+            </Text>
+            <Text style={styles.post__time}>{timeConverter(item.date)}</Text>
           </View>
         </View>
         <TouchableOpacity style={styles.post__edit}>
@@ -31,11 +44,9 @@ const HomePost = ({item}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.post__content}>
-        {item.postText ? (
-          <Text style={styles.post__text}>{item.postText} </Text>
-        ) : null}
+        {item.text ? <Text style={styles.post__text}>{item.text} </Text> : null}
         {item?.images?.length === 1 ? (
-          <Image style={styles.post__img} source={item.images[0]} />
+          <Image style={styles.post__img} source={{uri: item.images[0]}} />
         ) : item?.images?.length > 1 ? (
           <View style={styles.post__slider}>
             <ScrollView
@@ -45,7 +56,7 @@ const HomePost = ({item}) => {
               horizontal
               style={styles.post__slider}>
               {item.images.map((e, index) => (
-                <Image key={index} style={styles.post__img} source={e} />
+                <Image key={index} style={styles.post__img} source={{uri: e}} />
               ))}
             </ScrollView>
             <View style={styles.post__wrapDots}>
@@ -66,18 +77,19 @@ const HomePost = ({item}) => {
       </View>
       <View style={styles.post__footer}>
         <View style={styles.post__info}>
-          {item.likesAmount ? (
+          {item.likesCount ? (
             <View style={styles.post__infoItem}>
               <Icon name="like" size={22} color={colors.white} />
-              <Text style={styles.post__infoText}>{item.likesAmount}</Text>
+              <Text style={styles.post__infoText}>{item.likesCount}</Text>
             </View>
           ) : null}
-          {item.commentsAmount ? (
-            <View style={styles.post__infoItem}>
-              <Icon name="chat" size={22} color={colors.white} />
-              <Text style={styles.post__infoText}>{item.commentsAmount}</Text>
-            </View>
-          ) : null}
+
+          <View style={styles.post__infoItem}>
+            <Icon name="chat" size={22} color={colors.white} />
+            {item.commentsCount ? (
+              <Text style={styles.post__infoText}>{item.commentsCount}</Text>
+            ) : null}
+          </View>
         </View>
         <Icon name="bookmark" size={22} color={colors.white} />
       </View>

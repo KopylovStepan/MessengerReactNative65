@@ -57,10 +57,10 @@ const simulationData = [
   },
 ];
 
-const Home = ({navigation, posts, isFetching, getPosts}) => {
-  // useEffect(() => {
-  //   getPosts();
-  // }, [posts]);
+const Home = ({navigation, posts, loading, getPosts}) => {
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   return (
     <View style={styles.wrapper}>
@@ -80,12 +80,12 @@ const Home = ({navigation, posts, isFetching, getPosts}) => {
             </TouchableOpacity>
           </View>
         </View>
-        {isFetching ? (
+        {loading ? (
           <ActivityIndicator size="large" color={colors.white} />
         ) : (
           <FlatList
             style={styles.posts}
-            data={simulationData}
+            data={posts}
             renderItem={object => <HomePost item={object.item} />}
             keyExtractor={item => item.id}
           />

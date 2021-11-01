@@ -32,8 +32,8 @@ function* loadProfilePhotos() {
     yield put({type: LOAD_PROFILE_PHOTOS_FAILURE, error: data.error.error_msg});
   } else {
     const photos = [];
-    data.response.items.map(item => {
-      item.sizes.map(size => {
+    data.response.items.forEach(item => {
+      item.sizes.forEach(size => {
         if (size.type === 'm') {
           photos.push(size.url);
         }

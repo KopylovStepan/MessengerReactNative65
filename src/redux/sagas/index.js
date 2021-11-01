@@ -2,6 +2,7 @@ import {fork, all, spawn, call} from 'redux-saga/effects';
 import {profileSagaInfo, profileSagaPhotos} from './ProfileSaga';
 import {friendsSaga} from './FriendsSaga';
 import {peopleSaga, groupsSaga, groupsAndPeopleSaga} from './SearchSaga';
+import {homeSaga} from './HomeSaga';
 
 export default function* rootSaga() {
   const sagas = [
@@ -11,6 +12,7 @@ export default function* rootSaga() {
     peopleSaga,
     groupsSaga,
     groupsAndPeopleSaga,
+    homeSaga,
   ];
 
   const retrySagas = yield sagas.map(saga => {
