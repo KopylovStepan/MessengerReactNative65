@@ -1,21 +1,27 @@
 import React from 'react';
 import {Text, View, Image} from 'react-native';
+import {useEffect} from 'react';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import styles from './CustomDrawerStyle';
 import colors from '../../constants/colors';
 import Icon from '../Icon/Icon';
 
-const CustomDrawer = props => {
+const CustomDrawer = ({navigation, profileInfo, getUserProfileInfo, error}) => {
+  useEffect(() => {
+    getUserProfileInfo();
+  }, []);
   return (
     <View style={styles.wrapper}>
       <View style={styles.user}>
         <Image
           style={styles.user__avatar}
-          source={require('./../../../assets/img/UserAvatarMenu.jpg')}
+          source={{uri: profileInfo?.photo_100}}
         />
         <View style={styles.user__info}>
-          <Text style={styles.user__name}>Kat Williams</Text>
-          <Text style={styles.user__inst}>@Williams</Text>
+          <Text style={styles.user__name}>
+            {profileInfo?.first_name} {profileInfo?.last_name}
+          </Text>
+          <Text style={styles.user__inst}>@{profileInfo?.domain}</Text>
         </View>
       </View>
       <DrawerContentScrollView>
@@ -26,7 +32,7 @@ const CustomDrawer = props => {
           label="Home"
           labelStyle={styles.item__text}
           onPress={() => {
-            props.navigation.navigate('Home');
+            navigation.navigate('Home');
           }}
         />
         <DrawerItem
@@ -36,7 +42,7 @@ const CustomDrawer = props => {
           label="Мой профиль"
           labelStyle={styles.item__text}
           onPress={() => {
-            props.navigation.navigate('Profile');
+            navigation.navigate('Profile');
           }}
         />
         <DrawerItem
@@ -46,7 +52,7 @@ const CustomDrawer = props => {
           label="Друзья"
           labelStyle={styles.item__text}
           onPress={() => {
-            props.navigation.navigate('Friends');
+            navigation.navigate('Friends');
           }}
         />
         <DrawerItem
@@ -56,7 +62,7 @@ const CustomDrawer = props => {
           label="Поиск"
           labelStyle={styles.item__text}
           onPress={() => {
-            props.navigation.navigate('Search');
+            navigation.navigate('Search');
           }}
         />
         <DrawerItem
@@ -66,7 +72,7 @@ const CustomDrawer = props => {
           label="Настройки"
           labelStyle={styles.item__text}
           onPress={() => {
-            props.navigation.navigate('Settings');
+            navigation.navigate('Settings');
           }}
         />
         <DrawerItem
@@ -76,7 +82,7 @@ const CustomDrawer = props => {
           label="Пост"
           labelStyle={styles.item__text}
           onPress={() => {
-            props.navigation.navigate('Post');
+            navigation.navigate('Post');
           }}
         />
       </DrawerContentScrollView>

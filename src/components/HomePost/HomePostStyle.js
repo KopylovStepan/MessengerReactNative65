@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: 23,
+    width: 40,
   },
   post__infoText: {
     fontFamily: 'HKGrotesk-SemiBold',

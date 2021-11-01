@@ -27,6 +27,10 @@ const HomePost = ({item}) => {
       }
     }
   };
+  const getPostId = () => {
+    console.log(item.id);
+    console.log(item.source_id);
+  };
   return (
     <View style={styles.post}>
       <View style={styles.post__header}>
@@ -77,15 +81,17 @@ const HomePost = ({item}) => {
       </View>
       <View style={styles.post__footer}>
         <View style={styles.post__info}>
-          {item.likesCount ? (
-            <View style={styles.post__infoItem}>
-              <Icon name="like" size={22} color={colors.white} />
+          <View style={styles.post__infoItem}>
+            <Icon name="like" size={22} color={colors.white} />
+            {item.likesCount ? (
               <Text style={styles.post__infoText}>{item.likesCount}</Text>
-            </View>
-          ) : null}
+            ) : null}
+          </View>
 
           <View style={styles.post__infoItem}>
-            <Icon name="chat" size={22} color={colors.white} />
+            <TouchableOpacity onPress={getPostId}>
+              <Icon name="chat" size={22} color={colors.white} />
+            </TouchableOpacity>
             {item.commentsCount ? (
               <Text style={styles.post__infoText}>{item.commentsCount}</Text>
             ) : null}
