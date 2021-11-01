@@ -39,7 +39,7 @@ function* loadPosts() {
         });
       }
 
-      i.attachments.forEach(item => {
+      i?.attachments?.forEach(item => {
         item?.photo?.sizes.forEach(size => {
           if (size.type === 'p') {
             images.push(size.url);

@@ -86,8 +86,9 @@ const simulationData = [
   },
 ];
 
-const Post = ({navigation, getPost, post, isFetching}) => {
+const Post = ({navigation, isFetching, route}) => {
   const [text, onChangeText] = useState('');
+  const postInfo = route.params.post;
   // useEffect(() => {
   //   getPost();
   // }, [post]);
@@ -102,7 +103,7 @@ const Post = ({navigation, getPost, post, isFetching}) => {
           <>
             <FlatList
               style={styles.comments}
-              ListHeaderComponent={<PostHeader postData={simulationData} />}
+              ListHeaderComponent={<PostHeader postInfo={postInfo} />}
               data={simulationData[0]?.comments}
               renderItem={object => {
                 return <PostComment item={object.item} />;

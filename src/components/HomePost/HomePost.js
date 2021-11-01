@@ -15,7 +15,7 @@ function timeConverter(UNIX_time) {
   return time;
 }
 
-const HomePost = ({item}) => {
+const HomePost = ({post, navigation}) => {
   const [imgActive, setImgActive] = useState(0);
   const onChange = nativeEvent => {
     if (nativeEvent) {
@@ -28,19 +28,18 @@ const HomePost = ({item}) => {
     }
   };
   const getPostId = () => {
-    console.log(item.id);
-    console.log(item.source_id);
+    navigation.navigate('Post', {post: post});
   };
   return (
     <View style={styles.post}>
       <View style={styles.post__header}>
         <View style={styles.post__user}>
-          <Image style={styles.post__avatar} source={{uri: item.photo_50}} />
+          <Image style={styles.post__avatar} source={{uri: post.photo_50}} />
           <View style={styles.post__userInfo}>
             <Text style={styles.post__userName}>
-              {item.name ? item.name : `${item.first_name} ${item.last_name}`}
+              {post.name ? post.name : `${post.first_name} ${post.last_name}`}
             </Text>
-            <Text style={styles.post__time}>{timeConverter(item.date)}</Text>
+            <Text style={styles.post__time}>{timeConverter(post.date)}</Text>
           </View>
         </View>
         <TouchableOpacity style={styles.post__edit}>
@@ -48,10 +47,10 @@ const HomePost = ({item}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.post__content}>
-        {item.text ? <Text style={styles.post__text}>{item.text} </Text> : null}
-        {item?.images?.length === 1 ? (
-          <Image style={styles.post__img} source={{uri: item.images[0]}} />
-        ) : item?.images?.length > 1 ? (
+        {post.text ? <Text style={styles.post__text}>{post.text} </Text> : null}
+        {post?.images?.length === 1 ? (
+          <Image style={styles.post__img} source={{uri: post.images[0]}} />
+        ) : post?.images?.length > 1 ? (
           <View style={styles.post__slider}>
             <ScrollView
               onScroll={({nativeEvent}) => onChange(nativeEvent)}
@@ -59,12 +58,12 @@ const HomePost = ({item}) => {
               pagingEnabled
               horizontal
               style={styles.post__slider}>
-              {item.images.map((e, index) => (
+              {post.images.map((e, index) => (
                 <Image key={index} style={styles.post__img} source={{uri: e}} />
               ))}
             </ScrollView>
             <View style={styles.post__wrapDots}>
-              {item.images.map((e, index) => (
+              {post.images.map((e, index) => (
                 <Text
                   key={index}
                   style={
@@ -83,8 +82,8 @@ const HomePost = ({item}) => {
         <View style={styles.post__info}>
           <View style={styles.post__infoItem}>
             <Icon name="like" size={22} color={colors.white} />
-            {item.likesCount ? (
-              <Text style={styles.post__infoText}>{item.likesCount}</Text>
+            {post.likesCount ? (
+              <Text style={styles.post__infoText}>{post.likesCount}</Text>
             ) : null}
           </View>
 
@@ -92,8 +91,8 @@ const HomePost = ({item}) => {
             <TouchableOpacity onPress={getPostId}>
               <Icon name="chat" size={22} color={colors.white} />
             </TouchableOpacity>
-            {item.commentsCount ? (
-              <Text style={styles.post__infoText}>{item.commentsCount}</Text>
+            {post.commentsCount ? (
+              <Text style={styles.post__infoText}>{post.commentsCount}</Text>
             ) : null}
           </View>
         </View>

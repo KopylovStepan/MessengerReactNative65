@@ -39,7 +39,9 @@ const Home = ({navigation, posts, loading, getPosts}) => {
           <FlatList
             style={styles.posts}
             data={posts}
-            renderItem={object => <HomePost item={object.item} />}
+            renderItem={object => (
+              <HomePost post={object.item} navigation={navigation} />
+            )}
             keyExtractor={item => item.id}
           />
         )}
