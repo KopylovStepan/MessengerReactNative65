@@ -1,17 +1,13 @@
-import {call, apply, takeEvery, put} from 'redux-saga/effects';
+import {call, takeEvery, put} from 'redux-saga/effects';
 import {
   LOAD_POSTS,
   LOAD_POSTS_SUCCESS,
   LOAD_POSTS_FAILURE,
 } from '../types/home-types';
-import API_KEY from './../../../apikey';
+import {getPostsAPI} from './../services/homeAPI';
 
 function* loadPosts() {
-  const request = yield call(
-    fetch,
-    `https://api.vk.com/method/newsfeed.get?filters=post&access_token=${API_KEY}&v=5.131`,
-  );
-  const data = yield apply(request, request.json);
+  const data = yield call(getPostsAPI);
   if (data?.error?.error_msg) {
     yield put({type: LOAD_POSTS_FAILURE, error: data.error.error_msg});
   } else {

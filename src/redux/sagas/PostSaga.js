@@ -1,17 +1,13 @@
-import {call, apply, takeEvery, put} from 'redux-saga/effects';
+import {call, takeEvery, put} from 'redux-saga/effects';
 import {
   LOAD_POST_COMMENTS,
   LOAD_POST_COMMENTS_SUCCESS,
   LOAD_POST_COMMENTS_FAILURE,
 } from '../types/post-types';
-import API_KEY from './../../../apikey';
+import {getPostAPI} from './../services/postAPI';
 
 function* loadPostComments(action) {
-  const request = yield call(
-    fetch,
-    `https://api.vk.com/method/wall.getComments?thread=items,count&thread_items_count=10&need_likes=1&extended=1&post_id=${action.postId}&owner_id=${action.ownerId}&access_token=${API_KEY}&v=5.131`,
-  );
-  const data = yield apply(request, request.json);
+  const data = yield call(getPostAPI, action);
   if (data?.error?.error_msg) {
     yield put({type: LOAD_POST_COMMENTS_FAILURE, error: data.error.error_msg});
   } else {

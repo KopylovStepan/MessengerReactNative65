@@ -10,16 +10,11 @@ import {
   LOAD_GROUPS_SUCCESS,
   LOAD_GROUPS_FAILURE,
 } from '../types/search-types';
-import API_KEY from './../../../apikey';
+import {getAllAPI, getPeopleAPI, getGroupsAPI} from './../services/searchAPI';
 
 function* loadAll(action) {
-  const request = yield call(
-    fetch,
-    `https://api.vk.com/method/search.getHints?filters=friends,groups&fields=photo_50,city&q=${
-      action.searchText ? action.searchText : ' '
-    }&limit=20&access_token=${API_KEY}&v=5.131`,
-  );
-  const data = yield apply(request, request.json);
+  const data = yield call(getAllAPI, action);
+
   if (data?.error?.error_msg) {
     yield put({type: LOAD_ALL_FAILURE, error: data.error.error_msg});
   } else {
@@ -28,13 +23,7 @@ function* loadAll(action) {
 }
 
 function* loadPeople(action) {
-  const request = yield call(
-    fetch,
-    `https://api.vk.com/method/users.search?q=${
-      action.searchText ? action.searchText : ' '
-    }&fields=photo_50,city&access_token=${API_KEY}&v=5.131`,
-  );
-  const data = yield apply(request, request.json);
+  const data = yield call(getPeopleAPI, action);
   if (data?.error?.error_msg) {
     yield put({type: LOAD_PEOPLE_FAILURE, error: data.error.error_msg});
   } else {
@@ -43,13 +32,7 @@ function* loadPeople(action) {
 }
 
 function* loadGroups(action) {
-  const request = yield call(
-    fetch,
-    `https://api.vk.com/method/groups.search?q=${
-      action.searchText ? action.searchText : ' '
-    }&access_token=${API_KEY}&v=5.131`,
-  );
-  const data = yield apply(request, request.json);
+  const data = yield call(getGroupsAPI, action);
   if (data?.error?.error_msg) {
     yield put({type: LOAD_GROUPS_FAILURE, error: data.error.error_msg});
   } else {

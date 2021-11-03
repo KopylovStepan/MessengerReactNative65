@@ -1,4 +1,4 @@
-import {call, apply, takeEvery, put} from 'redux-saga/effects';
+import {call, takeEvery, put} from 'redux-saga/effects';
 import {
   LOAD_PROFILE_INFO,
   LOAD_PROFILE_INFO_SUCCESS,
@@ -7,14 +7,10 @@ import {
   LOAD_PROFILE_PHOTOS_SUCCESS,
   LOAD_PROFILE_PHOTOS_FAILURE,
 } from '../types/profile-types';
-import API_KEY from './../../../apikey';
+import {getProfileInfoAPI, getProfilePhotosAPI} from './../services/profileAPI';
 
 function* loadProfileInfo() {
-  const request = yield call(
-    fetch,
-    `https://api.vk.com/method/users.get?fields=education,photo_100,bdate,city,country,counters,career,domain,status,exports&access_token=${API_KEY}&v=5.131`,
-  );
-  const data = yield apply(request, request.json);
+  const data = yield call(getProfileInfoAPI);
   if (data?.error?.error_msg) {
     yield put({type: LOAD_PROFILE_INFO_FAILURE, error: data.error.error_msg});
   } else {
@@ -23,11 +19,7 @@ function* loadProfileInfo() {
 }
 
 function* loadProfilePhotos() {
-  const request = yield call(
-    fetch,
-    `https://api.vk.com/method/photos.getAll?&access_token=${API_KEY}&v=5.131`,
-  );
-  const data = yield apply(request, request.json);
+  const data = yield call(getProfilePhotosAPI);
   if (data?.error?.error_msg) {
     yield put({type: LOAD_PROFILE_PHOTOS_FAILURE, error: data.error.error_msg});
   } else {
