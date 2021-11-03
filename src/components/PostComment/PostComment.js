@@ -66,11 +66,17 @@ const PostComment = ({comment}) => {
           </View>
         </View>
       </View>
-      {/* <View style={styles.subcomments}>
-        {item?.subcomments.map(element => {
-          return <PostSubcomment key={element.id} subcomment={element} />;
+      <View style={styles.subcomments}>
+        {comment?.subComments.map(element => {
+          return (
+            <PostSubcomment
+              key={element.subcommentId}
+              subcomment={element}
+              timeConverter={timeConverter}
+            />
+          );
         })}
-      </View> */}
+      </View>
     </>
   );
 };

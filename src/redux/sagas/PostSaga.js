@@ -9,7 +9,7 @@ import API_KEY from './../../../apikey';
 function* loadPostComments(action) {
   const request = yield call(
     fetch,
-    `https://api.vk.com/method/wall.getComments?thread=items,count&need_likes=1&extended=1&post_id=${action.postId}&owner_id=${action.ownerId}&access_token=${API_KEY}&v=5.131`,
+    `https://api.vk.com/method/wall.getComments?thread=items,count&thread_items_count=10&need_likes=1&extended=1&post_id=${action.postId}&owner_id=${action.ownerId}&access_token=${API_KEY}&v=5.131`,
   );
   const data = yield apply(request, request.json);
   if (data?.error?.error_msg) {
@@ -20,6 +20,39 @@ function* loadPostComments(action) {
       let last_name = null;
       let photo_50 = null;
       let name = null;
+      let subComments = i.thread.items.map(subcom => {
+        let first_name_subcommentator = null;
+        let last_name_subcommentator = null;
+        let photo_50_subcommentator = null;
+        let name_subcommentator = null;
+        if (subcom.from_id < 0) {
+          data.response.groups.forEach(group => {
+            if (Math.abs(subcom.from_id) === group.id) {
+              name_subcommentator = group.name;
+              photo_50_subcommentator = group.photo_50;
+            }
+          });
+        } else if (subcom.from_id > 0) {
+          data.response.profiles.forEach(profile => {
+            if (subcom.from_id === profile.id) {
+              first_name_subcommentator = profile.first_name;
+              last_name_subcommentator = profile.last_name;
+              photo_50_subcommentator = profile.photo_50;
+            }
+          });
+        }
+        const subcomment = {
+          subcommentId: subcom.id,
+          date: subcom.date,
+          text: subcom.text,
+          likesCount: subcom.likes.count,
+          first_name_subcommentator: first_name_subcommentator,
+          last_name_subcommentator: last_name_subcommentator,
+          name_subcommentator: name_subcommentator,
+          photo_50_subcommentator: photo_50_subcommentator,
+        };
+        return subcomment;
+      });
 
       if (i.from_id < 0) {
         data.response.groups.forEach(group => {
@@ -48,6 +81,7 @@ function* loadPostComments(action) {
         last_name: last_name,
         name: name,
         photo_50: photo_50,
+        subComments: subComments,
       };
       return comment;
     });
