@@ -1,21 +1,35 @@
-import {SET_POST, TOGGLE_IS_FETCHING} from './../types/post-types';
+import {
+  LOAD_POST_COMMENTS,
+  LOAD_POST_COMMENTS_SUCCESS,
+  LOAD_POST_COMMENTS_FAILURE,
+} from './../types/post-types';
 
 let initialState = {
-  post: [],
-  isFetching: false,
+  postComments: [],
+  postId: null,
+  ownerId: null,
+  loading: false,
+  error: '',
 };
 
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_POST:
+    case LOAD_POST_COMMENTS:
       return {
         ...state,
-        post: action.post,
+        loading: true,
       };
-    case TOGGLE_IS_FETCHING:
+    case LOAD_POST_COMMENTS_SUCCESS:
       return {
         ...state,
-        isFetching: action.isFetching,
+        postComments: action.postComments,
+        loading: false,
+      };
+    case LOAD_POST_COMMENTS_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
       };
     default:
       return state;

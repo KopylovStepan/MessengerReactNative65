@@ -86,29 +86,30 @@ const simulationData = [
   },
 ];
 
-const Post = ({navigation, isFetching, route}) => {
+const Post = ({navigation, loading, route, postComments, getPostComments}) => {
   const [text, onChangeText] = useState('');
   const postInfo = route.params.post;
-  // useEffect(() => {
-  //   getPost();
-  // }, [post]);
+
+  useEffect(() => {
+    getPostComments(postInfo.id, postInfo.source_id);
+  }, [postInfo.id, postInfo.source_id]);
 
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
         <Header text={'Запись'} navigation={navigation} />
-        {isFetching ? (
+        {loading ? (
           <ActivityIndicator size="large" color={colors.white} />
         ) : (
           <>
             <FlatList
               style={styles.comments}
               ListHeaderComponent={<PostHeader postInfo={postInfo} />}
-              data={simulationData[0]?.comments}
+              data={postComments}
               renderItem={object => {
-                return <PostComment item={object.item} />;
+                return <PostComment comment={object.item} />;
               }}
-              keyExtractor={item => item.id}
+              keyExtractor={item => item.commentId}
             />
             <View style={styles.footer}>
               <View style={styles.footer__container}>
