@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import store from './src/redux/store';
@@ -13,6 +13,7 @@ import Post from './src/screens/Post/index';
 import CustomDrawer from './src/components/CustomDrawer/index';
 import styles from './AppStyle';
 import colors from './src/constants/colors';
+import SplashScreen from 'react-native-splash-screen';
 import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
 import icoMoonConfig from './selection.json';
 const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
@@ -20,6 +21,9 @@ const Icon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 const Drawer = createDrawerNavigator();
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <Provider store={store}>
       <NavigationContainer>
