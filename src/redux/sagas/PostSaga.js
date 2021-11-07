@@ -4,7 +4,7 @@ import {
   LOAD_POST_COMMENTS_SUCCESS,
   LOAD_POST_COMMENTS_FAILURE,
 } from '../types/post-types';
-import {getPostAPI} from './../services/postAPI';
+import {getPostAPI} from './../../services/postAPI';
 
 function* loadPostComments(action) {
   const data = yield call(getPostAPI, action);

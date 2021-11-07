@@ -10,7 +10,11 @@ import {
   LOAD_GROUPS_SUCCESS,
   LOAD_GROUPS_FAILURE,
 } from '../types/search-types';
-import {getAllAPI, getPeopleAPI, getGroupsAPI} from './../services/searchAPI';
+import {
+  getAllAPI,
+  getPeopleAPI,
+  getGroupsAPI,
+} from './../../services/searchAPI';
 
 function* loadAll(action) {
   const data = yield call(getAllAPI, action);

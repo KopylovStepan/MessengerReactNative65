@@ -4,7 +4,7 @@ import {
   LOAD_FRIENDS_SUCCESS,
   LOAD_FRIENDS_FAILURE,
 } from '../types/friends-types';
-import {getFriendsAPI} from './../services/friendsAPI';
+import {getFriendsAPI} from './../../services/friendsAPI';
 
 function* loadFriends() {
   const data = yield call(getFriendsAPI);

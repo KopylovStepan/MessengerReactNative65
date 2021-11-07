@@ -6,12 +6,12 @@ import Header from '../../components/Header/index';
 import Icon from '../../components/Icon/Icon';
 
 const Settings = ({navigation}) => {
-  const item = (nameIcon, text, color, styleText) => {
+  const renderItem = (nameIcon, text, color, styleText) => {
     return (
-      <>
+      <TouchableOpacity style={styles.settings__item}>
         <Icon name={nameIcon} size={22} color={color} />
         <Text style={styleText}>{text}</Text>
-      </>
+      </TouchableOpacity>
     );
   };
 
@@ -20,30 +20,24 @@ const Settings = ({navigation}) => {
       <View style={styles.container}>
         <Header navigation={navigation} text={'Настройки'} />
         <View style={styles.settings}>
-          <TouchableOpacity style={styles.settings__item}>
-            {item(
-              'color-swatch',
-              'Внешний вид',
-              colors.white,
-              styles.settings__text,
-            )}
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.settings__item}>
-            {item(
-              'information-circle',
-              'О приложении',
-              colors.white,
-              styles.settings__text,
-            )}
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.settings__item}>
-            {item(
-              'logout',
-              'Выйти',
-              colors.pearlPurple,
-              styles.settings__textOut,
-            )}
-          </TouchableOpacity>
+          {renderItem(
+            'color-swatch',
+            'Внешний вид',
+            colors.white,
+            styles.settings__text,
+          )}
+          {renderItem(
+            'information-circle',
+            'О приложении',
+            colors.white,
+            styles.settings__text,
+          )}
+          {renderItem(
+            'logout',
+            'Выйти',
+            colors.pearlPurple,
+            styles.settings__textOut,
+          )}
         </View>
       </View>
     </View>

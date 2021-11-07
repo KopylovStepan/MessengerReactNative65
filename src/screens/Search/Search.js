@@ -24,6 +24,7 @@ const Search = ({
 }) => {
   const [text, onChangeText] = useState('');
   const [active, setActive] = useState('Все');
+  let activeData = null;
 
   useEffect(() => {
     getSearchAll();
@@ -50,6 +51,13 @@ const Search = ({
       getSearchGroups(text);
     }
   };
+  if (active === 'Все') {
+    activeData = allData;
+  } else if (active === 'Люди') {
+    activeData = peopleData;
+  } else if (active === 'Сообщества') {
+    activeData = groupsData;
+  }
 
   return (
     <View style={styles.wrapper}>
@@ -127,15 +135,7 @@ const Search = ({
         ) : (
           <FlatList
             style={styles.search}
-            data={
-              active === 'Все'
-                ? allData
-                : active === 'Люди'
-                ? peopleData
-                : active === 'Сообщества'
-                ? groupsData
-                : null
-            }
+            data={activeData}
             renderItem={object => (
               <MessengerUser
                 firstName={

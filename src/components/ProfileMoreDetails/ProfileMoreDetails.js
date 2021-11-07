@@ -6,7 +6,7 @@ import colors from '../../constants/colors';
 import Icon from '../Icon/Icon';
 
 const ProfileMoreDetails = ({active, setActive, profile}) => {
-  const item = (nameIcon, text) => {
+  const renderItem = (nameIcon, text) => {
     return (
       <View style={styles.details__item}>
         <Icon name={nameIcon} size={22} color={colors.white} />
@@ -35,23 +35,23 @@ const ProfileMoreDetails = ({active, setActive, profile}) => {
                 <Icon name="backspace" size={13} color={colors.pearlPurple} />
               </TouchableOpacity>
             </View>
-            {item('chat', profile?.status)}
-            {item('cake', `День рождения: ${profile?.bdate}`)}
-            {item(
+            {renderItem('chat', profile?.status)}
+            {renderItem('cake', `День рождения: ${profile?.bdate}`)}
+            {renderItem(
               'location-marker',
               `Город: ${profile?.country?.title}, ${profile?.city?.title}`,
             )}
-            {item('briefcase', profile?.university_name)}
+            {renderItem('briefcase', profile?.university_name)}
           </View>
           <View style={styles.contacts}>
             <View style={styles.contacts__header}>
               <MessengerTextHeadline text={'Контакты'} />
             </View>
-            {item('arrow-up-right', profile?.exports?.telegram)}
-            {item('twitter', profile?.exports?.twitter)}
-            {item('instagram', profile?.exports?.instagram)}
-            {item('facebook', profile?.exports?.facebook)}
-            {item('telegram', profile?.exports?.paper)}
+            {renderItem('arrow-up-right', profile?.exports?.telegram)}
+            {renderItem('twitter', profile?.exports?.twitter)}
+            {renderItem('instagram', profile?.exports?.instagram)}
+            {renderItem('facebook', profile?.exports?.facebook)}
+            {renderItem('telegram', profile?.exports?.paper)}
           </View>
         </View>
       </View>

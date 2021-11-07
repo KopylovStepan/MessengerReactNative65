@@ -1,4 +1,4 @@
-import API_KEY from './../../../apikey';
+import API_KEY from './../../apikey';
 import * as axios from 'axios';
 
 export const getPostAPI = action => {

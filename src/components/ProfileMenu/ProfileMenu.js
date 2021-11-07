@@ -10,7 +10,7 @@ const ProfileMenu = ({active, setActive}) => {
     setActive(false);
   };
 
-  const item = (nameIcon, text) => {
+  const renderItem = (nameIcon, text) => {
     return (
       <>
         <Icon name={nameIcon} size={22} color={colors.white} />
@@ -28,10 +28,10 @@ const ProfileMenu = ({active, setActive}) => {
       <View style={styles.container}>
         <View style={styles.window}>
           <TouchableOpacity style={styles.window__itemShare}>
-            {item('share', 'Поделиться')}
+            {renderItem('share', 'Поделиться')}
           </TouchableOpacity>
           <TouchableOpacity style={styles.window__itemCopy}>
-            {item('document-duplicate', 'Скопировать ссылку')}
+            {renderItem('document-duplicate', 'Скопировать ссылку')}
           </TouchableOpacity>
         </View>
         <TouchableOpacity onPress={close} style={styles.window__itemClose}>

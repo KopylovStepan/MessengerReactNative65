@@ -7,7 +7,10 @@ import {
   LOAD_PROFILE_PHOTOS_SUCCESS,
   LOAD_PROFILE_PHOTOS_FAILURE,
 } from '../types/profile-types';
-import {getProfileInfoAPI, getProfilePhotosAPI} from './../services/profileAPI';
+import {
+  getProfileInfoAPI,
+  getProfilePhotosAPI,
+} from './../../services/profileAPI';
 
 function* loadProfileInfo() {
   const data = yield call(getProfileInfoAPI);

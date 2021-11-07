@@ -4,7 +4,7 @@ import {
   LOAD_POSTS_SUCCESS,
   LOAD_POSTS_FAILURE,
 } from '../types/home-types';
-import {getPostsAPI} from './../services/homeAPI';
+import {getPostsAPI} from './../../services/homeAPI';
 
 function* loadPosts() {
   const data = yield call(getPostsAPI);
