@@ -10,6 +10,7 @@ import Friends from './src/screens/Friends/index';
 import Search from './src/screens/Search/index';
 import Settings from './src/screens/Settings/index';
 import Post from './src/screens/Post/index';
+import About from './src/screens/About/index';
 import CustomDrawer from './src/components/CustomDrawer/index';
 import styles from './AppStyle';
 import colors from './src/constants/colors';
@@ -39,6 +40,7 @@ const App = () => {
             <Drawer.Screen name="Search" component={Search} />
             <Drawer.Screen name="Settings" component={Settings} />
             <Drawer.Screen name="Post" component={Post} />
+            <Drawer.Screen name="About" component={About} />
           </Drawer.Navigator>
         </SafeAreaView>
       </NavigationContainer>
