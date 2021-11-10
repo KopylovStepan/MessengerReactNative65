@@ -2,11 +2,12 @@ import {fork, all, spawn, call} from 'redux-saga/effects';
 import {profileSagaInfo, profileSagaPhotos} from './ProfileSaga';
 import {friendsSaga} from './FriendsSaga';
 import {peopleSaga, groupsSaga, groupsAndPeopleSaga} from './SearchSaga';
-import {homeSaga} from './HomeSaga';
+import {homeSaga, homeSagaLoadMore} from './HomeSaga';
 import {postSaga} from './PostSaga';
 
 export default function* rootSaga() {
   const sagas = [
+    homeSagaLoadMore,
     profileSagaInfo,
     profileSagaPhotos,
     friendsSaga,

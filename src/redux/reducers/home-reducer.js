@@ -5,7 +5,8 @@ import {
 } from './../types/home-types';
 
 let initialState = {
-  posts: {},
+  posts: [],
+  next_from: null,
   loading: false,
   error: '',
 };
@@ -20,7 +21,8 @@ const homeReducer = (state = initialState, action) => {
     case LOAD_POSTS_SUCCESS:
       return {
         ...state,
-        posts: action.posts,
+        posts: [...state.posts, ...action.posts],
+        next_from: action.next_from,
         loading: false,
       };
     case LOAD_POSTS_FAILURE:
@@ -29,6 +31,7 @@ const homeReducer = (state = initialState, action) => {
         error: action.error,
         loading: false,
       };
+
     default:
       return state;
   }

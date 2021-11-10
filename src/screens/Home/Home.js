@@ -10,7 +10,14 @@ import styles from './HomeStyle';
 import colors from '../../constants/colors';
 import Icon from '../../components/Icon/Icon';
 
-const Home = ({navigation, posts, loading, getPosts}) => {
+const Home = ({
+  navigation,
+  posts,
+  loading,
+  getPosts,
+  getPostsMore,
+  next_from,
+}) => {
   useEffect(() => {
     getPosts();
   }, []);
@@ -43,6 +50,10 @@ const Home = ({navigation, posts, loading, getPosts}) => {
               <HomePost post={object.item} navigation={navigation} />
             )}
             keyExtractor={item => item.id}
+            onEndReached={() => {
+              getPostsMore(next_from);
+            }}
+            onEndReachedThreshold={0.25}
           />
         )}
       </View>
